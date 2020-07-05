@@ -16,7 +16,7 @@ APP_NAME='helloWorld'
 export PYTHONHASHSEED=1
 
 # https://reproducible-builds.org/docs/source-date-epoch/
-export SOURCE_DATE_EPOCH=1
+export SOURCE_DATE_EPOCH=1577883661
 
 ########
 # INFO #
@@ -55,7 +55,7 @@ ${PYTHON_PATH} -m pip install --upgrade --user PyInstaller
 mkdir pyinstaller
 pushd pyinstaller
 
-${PYTHON_PATH} -m PyInstaller -y --clean --onefile --windowed --name "${APP_NAME}" ../main.py
+${PYTHON_PATH} -m PyInstaller -y --clean --windowed --name "${APP_NAME}" ../main.py
 
 pushd dist
 
