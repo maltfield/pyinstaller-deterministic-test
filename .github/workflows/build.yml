@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Execute script to build MacOS .dmg file
-      run: "buildDmg.sh"
+      run: "./buildDmg.sh"
       shell: bash
 
     - uses: actions/upload-artifact@v2
