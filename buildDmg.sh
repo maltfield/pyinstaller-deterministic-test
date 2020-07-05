@@ -57,7 +57,7 @@ sudo ${PYTHON_PATH} -m pip install --upgrade --ignore-installed PyInstaller
 mkdir pyinstaller
 pushd pyinstaller
 
-${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --debug --name "${APP_NAME}" ../main.py
+${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --debug all --name "${APP_NAME}" ../main.py
 
 pushd dist
 
