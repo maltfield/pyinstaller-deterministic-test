@@ -45,9 +45,15 @@ brew update
 # install os-level depends
 brew install python3
 
+# setup venv
+sudo ${PYTHON_PATH} -m pip install --upgrade --ignore-installed pip setuptools virtualenv
+sudo rm -rf /tmp/pyinstaller_venv
+${PYTHON_PATH} -m virtualenv /tmp/pyinstaller_venv
+source /tmp/pyinstaller_venv/bin/activate
+
 # install PyInstaller
-sudo ${PYTHON_PATH} -m pip uninstall -y PyInstaller
-sudo ${PYTHON_PATH} -m pip install --upgrade --ignore-installed PyInstaller
+python -m pip uninstall -y PyInstaller
+python -m pip install --upgrade --ignore-installed PyInstaller
 #sudo ${PYTHON_PATH} -m pip install --upgrade --ignore-installed https://github.com/pyinstaller/pyinstaller/archive/develop.zip
 
 #####################
@@ -58,7 +64,7 @@ mkdir pyinstaller
 pushd pyinstaller
 
 #${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --debug all --name "${APP_NAME}" ../main.py
-${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --name "${APP_NAME}" ../main.py
+python -m PyInstaller -y --clean --windowed --onefile --name "${APP_NAME}" ../main.py
 
 pushd dist
 
@@ -86,10 +92,10 @@ sw_vers
 #python2 --version
 #which python3
 #python3 --version
-${PYTHON_PATH} --version
-${PYTHON_PATH} -m pip list
-${PYTHON_PATH} -c 'import os; print( os.environ )'
-${PYTHON_PATH} -c 'import sys; print( sys.argv, sys.builtin_module_names, sys.executable, sys.path, sys.platform, sys.prefix, sys.version, sys.api_version )'
+python --version
+python -m pip list
+python -c 'import os; print( os.environ )'
+python -c 'import sys; print( sys.argv, sys.builtin_module_names, sys.executable, sys.path, sys.platform, sys.prefix, sys.version, sys.api_version )'
 
 echo $PATH
 pwd
