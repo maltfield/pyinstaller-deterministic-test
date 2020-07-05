@@ -57,12 +57,14 @@ sudo ${PYTHON_PATH} -m pip install --upgrade --ignore-installed PyInstaller
 mkdir pyinstaller
 pushd pyinstaller
 
-${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --name "${APP_NAME}" ../main.py
+${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --debug --name "${APP_NAME}" ../main.py
 
 pushd dist
 
-# change the timestamps of all the files in the appdir or reproducable builds
-#find ${APP_NAME}.app -exec touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" {} +
+# change the timestamps of all the files in the .app dir for reproducable builds
+find ${APP_NAME}.app -exec touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" {} +
+
+# and the onefile binary too
 touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" "${APP_NAME}"
 shasum "${APP_NAME}"
 
