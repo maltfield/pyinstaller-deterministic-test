@@ -25,10 +25,10 @@ export SOURCE_DATE_EPOCH=1577883661
 # print some info for debugging failed builds
 uname -a
 sw_vers
-which python2
-python2 --version
-which python3
-python3 --version
+#which python2
+#python2 --version
+#which python3
+#python3 --version
 ${PYTHON_PATH} --version
 echo $PATH
 pwd
@@ -81,12 +81,15 @@ popd
 
 uname -a
 sw_vers
-which python2
-python2 --version
-which python3
-python3 --version
+#which python2
+#python2 --version
+#which python3
+#python3 --version
 ${PYTHON_PATH} --version
 ${PYTHON_PATH} -m pip list
+${PYTHON_PATH} -c 'import os; print( os.environ )'
+${PYTHON_PATH} -c 'import sys; print( sys.argv, sys.builtin_module_names, sys.executable, sys.path, sys.platform, sys.prefix, sys.version, sys.api_version )'
+
 echo $PATH
 pwd
 ls -lah
