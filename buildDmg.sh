@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 set -x
 
 ############
@@ -56,14 +56,17 @@ ${PYTHON_PATH} -m pip install --upgrade --user PyInstaller
 mkdir pyinstaller
 pushd pyinstaller
 
-${PYTHON_PATH} -m PyInstaller -y --clean --windowed --name "${APP_NAME}" ../main.py
+${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --name "${APP_NAME}" ../main.py
 
 pushd dist
 
 # change the timestamps of all the files in the appdir or reproducable builds
-find ${APP_NAME}.app -exec touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" {} +
+#find ${APP_NAME}.app -exec touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" {} +
+touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" "${APP_NAME}"
+shasum "${APP_NAME}"
 
-hdiutil create ./${APP_NAME}.dmg -srcfolder ${APP_NAME}.app -ov
+#hdiutil create ./${APP_NAME}.dmg -srcfolder ${APP_NAME}.app -ov
+hdiutil create ./${APP_NAME}.dmg -srcfolder ${APP_NAME} -ov
 touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" "${APP_NAME}.dmg"
 shasum "${APP_NAME}.dmg"
 
