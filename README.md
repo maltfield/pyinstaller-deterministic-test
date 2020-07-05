@@ -1,0 +1,2 @@
+# pyinstaller-deterministic-test
+A repo that builds a python app with pyinstaller to test for reproducibility
