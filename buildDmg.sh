@@ -46,8 +46,8 @@ brew update
 brew install python3
 
 # install PyInstaller
-#${PYTHON_PATH} -m pip install --upgrade --user PyInstaller
-${PYTHON_PATH} -m pip install --upgrade --user https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+${PYTHON_PATH} -m pip install --upgrade --user PyInstaller
+#${PYTHON_PATH} -m pip install --upgrade --user https://github.com/pyinstaller/pyinstaller/archive/develop.zip
 
 #####################
 # PYINSTALLER BUILD #
