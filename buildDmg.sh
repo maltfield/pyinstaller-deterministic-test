@@ -64,7 +64,7 @@ mkdir pyinstaller
 pushd pyinstaller
 
 #${PYTHON_PATH} -m PyInstaller -y --clean --windowed --onefile --debug all --name "${APP_NAME}" ../main.py
-python -m PyInstaller -y --clean --windowed --onefile --name "${APP_NAME}" ../main.py
+python -m PyInstaller -y --clean --windowed --onefile --log-level DEBUG --name "${APP_NAME}" ../main.py
 
 pushd dist
 
