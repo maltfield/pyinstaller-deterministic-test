@@ -65,6 +65,7 @@ find ${APP_NAME}.app -exec touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H
 
 hdiutil create ./${APP_NAME}.dmg -srcfolder ${APP_NAME}.app -ov
 touch -h -t "`date -r ${SOURCE_DATE_EPOCH} "+%Y%m%d%H%M.%S"`" "${APP_NAME}.dmg"
+shasum "${APP_NAME}.dmg"
 
 popd
 
