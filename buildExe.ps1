@@ -68,11 +68,11 @@ C:\tmp\pyinstaller_venv\Scripts\python.exe -m pip install --upgrade PyInstaller 
 # BUILD EXE #
 #############
 
-C:\tmp\pyinstaller_venv\Scripts\python.exe -m PyInstaller -y --clean --windowed --onefile --log-level DEBUG --name "${APP_NAME}" ../main.py
+# create 'pyinstaller' dir and enter it
+New-Item -Path pyinstaller -Type Directory | Out-String
+cd pyinstaller | Out-String
 
-#####################
-# PREPARE ARTIFACTS #
-#####################
+C:\tmp\pyinstaller_venv\Scripts\python.exe -m PyInstaller -y --clean --windowed --onefile --log-level DEBUG --name "${APP_NAME}" ../main.py
 
 # return to the root of our build dir
 cd .. | Out-String
