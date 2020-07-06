@@ -74,12 +74,20 @@ cd pyinstaller | Out-String
 
 C:\tmp\pyinstaller_venv\Scripts\python.exe -m PyInstaller -y --clean --windowed --onefile --log-level DEBUG --name "$env:APP_NAME" ../main.py
 
+# output the file hash
+Get-FileHash dist\$env:APP_NAME | Out-String
+
 # return to the root of our build dir
 cd .. | Out-String
 
 #######################
 # OUTPUT VERSION INFO #
 #######################
+
+# output list of files
+Get-ChildItem -Force | Out-String
+Get-ChildItem -Path pyinstaller -Force | Out-String
+Get-ChildItem -Path pyinstaller\dist -Force | Out-String
 
 Write-Output 'INFO: Python versions info'
 
