@@ -72,10 +72,10 @@ C:\tmp\pyinstaller_venv\Scripts\python.exe -m pip install --upgrade PyInstaller 
 New-Item -Path pyinstaller -Type Directory | Out-String
 cd pyinstaller | Out-String
 
-C:\tmp\pyinstaller_venv\Scripts\python.exe -m PyInstaller -y --clean --windowed --onefile --log-level DEBUG --name "$env:APP_NAME" ../main.py
+C:\tmp\pyinstaller_venv\Scripts\python.exe -m PyInstaller -y --clean --windowed --onefile --log-level DEBUG --name "${env:APP_NAME}" ../main.py
 
 # output the file hash
-Get-FileHash dist\$env:APP_NAME | Out-String
+Get-FileHash "dist\${env:APP_NAME}.exe" | Out-String
 
 # return to the root of our build dir
 cd .. | Out-String
