@@ -35,6 +35,10 @@ pwd
 ls -lah
 env
 
+# detailed info about python binary
+shasum ${PYTHON_PATH}
+cat ${PYTHON_PATH} | strings
+
 ###################
 # INSTALL DEPENDS #
 ###################
